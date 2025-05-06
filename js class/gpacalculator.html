@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPA Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px gray;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .result {
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>GPA Calculator</h2>
+      <p>Enter your GPA for 5 subjects:</p>
+
+      <input
+        type="number"
+        id="sub1"
+        placeholder="Subject 1 GPA"
+        min="0"
+        max="4"
+        step="0.1"
+      />
+      <input
+        type="number"
+        id="sub2"
+        placeholder="Subject 2 GPA"
+        min="0"
+        max="4"
+        step="0.1"
+      />
+      <input
+        type="number"
+        id="sub3"
+        placeholder="Subject 3 GPA"
+        min="0"
+        max="4"
+        step="0.1"
+      />
+      <input
+        type="number"
+        id="sub4"
+        placeholder="Subject 4 GPA"
+        min="0"
+        max="4"
+        step="0.1"
+      />
+      <input
+        type="number"
+        id="sub5"
+        placeholder="Subject 5 GPA"
+        min="0"
+        max="4"
+        step="0.1"
+      />
+
+      <button onclick="calculateGPA()">Calculate GPA</button>
+
+      <p class="result" id="result"></p>
+    </div>
+
+    <script>
+      function calculateGPA() {
+        let gpaArray = [
+          parseFloat(document.getElementById("sub1").value) || 0,
+          parseFloat(document.getElementById("sub2").value) || 0,
+          parseFloat(document.getElementById("sub3").value) || 0,
+          parseFloat(document.getElementById("sub4").value) || 0,
+          parseFloat(document.getElementById("sub5").value) || 0,
+        ];
+
+        let totalGPA = gpaArray.reduce((a, b) => a + b, 0) / 5;
+        totalGPA = totalGPA.toFixed(2);
+
+        let grade = "";
+
+        if (totalGPA >= 3.7) grade = "A";
+        else if (totalGPA >= 3.3) grade = "A-";
+        else if (totalGPA >= 3.0) grade = "B";
+        else if (totalGPA >= 2.7) grade = "B-";
+        else if (totalGPA >= 2.3) grade = "C";
+        else if (totalGPA >= 2.0) grade = "C-";
+        else if (totalGPA >= 1.7) grade = "D";
+        else grade = "NQ";
+
+        document.getElementById(
+          "result"
+        ).innerText = `Your GPA is: ${totalGPA}, Grade: ${grade}`;
+      }
+    </script>
+  </body>
+</html>

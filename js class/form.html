@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Form Validation</title>
+        <style>
+            input[type=text], input[type=password]{
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box; 
+            }
+            input[type=submit]{
+                width: 100%;
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer; 
+            }
+            input[type=submit]:hover{
+                background-color: #45a049; 
+            }
+            form{
+                border: 3px solid #f1f1f1;
+                width: 30%;
+                margin: auto;
+                padding: 10px; 
+            }
+        </style>
+    </head>
+    <body>
+        <p id="mypara">This is paragraph</p>
+        <form action="" onsubmit="return validate()">
+            <input type="text" id="username" placeholder="Enter Username">
+            <input type="password" id="password" placeholder="Enter Password">
+            <input type="submit" " value="Login">
+        </form>
+
+        <script>
+
+            function validate()
+            {
+                var uname = document.getElementById("username").value;
+                var pass = document.getElementById("password").value;
+                //cannot be empty
+                if(uname == '' || pass=='')
+                {
+                    alert('Username & Password cannot be empty');
+                    return false;
+                }
+                //cannot be same
+                if(uname == pass)
+                {
+                    alert('Username and password cannot be same');
+                    return false;
+                }
+
+                //at least five character 
+                if(uname.length<5 || pass.length<5)
+                {
+                    alert('Username and password must be at least 5 characters long');
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
+
+<!-- 
+    Input username, password and email from user. Apply the following validations:
+    1. username,password and email are required.
+    2. username must be at least 5 character and password must be at least 8 character.
+    3. email cannot be same as username
+    4. email cannot be more than 15 character.
+ -->
